@@ -1,102 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>JDFlipNumberView by jaydee3</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>JDFlipNumberView by jaydee3</title>
   </head>
-
   <body>
-  
-    <a href="https://github.com/jaydee3/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
-  
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1 class="header">JDFlipNumberView</h1>
+        <p class="header">Simulating a animated analog flip clock for iOS.</p>
 
-        <header>
-          <h1>JDFlipNumberView</h1>
-          <h2>iOS: An animated view for displaying &quot;analog flipping numbers&quot;.</h2>
-        </header>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/jaydee3/JDFlipNumberView/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/jaydee3/JDFlipNumberView/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/jaydee3/JDFlipNumberView">View On GitHub</a></li>
+        </ul>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/jaydee3/JDFlipNumberView/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/jaydee3/JDFlipNumberView/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/jaydee3/JDFlipNumberView" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/jaydee3">jaydee3</a></p>
 
-        <hr>
 
-        <section id="main_content">
-          <h2>JDFlipNumberView</h2>
+      </header>
+      <section>
+        <h2>JDFlipNumberView 2.0</h2>
 
-<p>See <a href="#screenshots">screenshots</a> below.</p>
+<p>The FlipNumberView is simulating an analog flip display (like those for the departure time on the airport). It's well abstracted and damn easy to use. Please open a <a href="https://github.com/jaydee3/JDFlipNumberView/issues">Github issue</a>, if you think anything is missing or wrong.</p>
 
-<p>The Flip Number View is simulating an analog flip display (like those for the departure time on the airport).</p>
+<p>See <a href="#screenshots">screenshots</a> of the example project below.<br>
+If you are using this class, you may list your app on the <a href="https://github.com/jaydee3/JDFlipNumberView/wiki/Apps-using-JDFlipNumberView">wiki page</a>.</p>
 
-<p>It is using CoreAnimation to get the desired effect. It's well abstracted and should be really easy to use. But it still needs some work, so feel free to contribute!</p>
+<h2>Installation</h2>
+
+<p><strong>A) Use CocoaPods</strong> (preferred way, see <a href="http://cocoapods.org">cocoapods website</a>)</p>
+
+<blockquote>
+<p>1) add <code>pod 'JDFlipNumberView'</code> to your Podfile<br>
+2) run <code>pod install</code> </p>
+</blockquote>
+
+<p><strong>B) Manual way</strong> (not needed, if you use cocoapods):</p>
+
+<blockquote>
+<p>1) Add all files from <code>JDFlipNumberView/JDFlipNumberView/*</code> to your 
+project, including the <code>JDFlipNumberView.bundle</code><br>
+2) Link with the <code>QuartzCore.framework</code></p>
+</blockquote>
 
 <h2>Contents</h2>
 
-<p>You get three classes for different usecases:</p>
+<p>The two main classes are:</p>
 
 <ul>
 <li>
-<code>JDFlipNumberView</code><br><strong>A single animated digit.</strong> Range 0-9.</li>
+<code>JDFlipNumberView</code><br>
+The <strong>Standard FlipNumberView</strong>. It shows an integer value as FlipView.
+It has a choosable amount of digits.</li>
 <li>
-<code>JDGroupedFlipNumberView</code><br>
-A grouped and chained choosable number of flipviews for higher numbers.<br>
-It is using a variable amount of <code>JDFlipNumberView</code> instances itself and chains them together.</li>
-<li>
-<code>JDDateCountdownFlipView</code><br><strong>A date countdown.</strong> Just init with a target date and add it as a subview.<br>
-It is using four <code>JDGroupedFlipNumberView</code> instances itself and chains them together.</li>
-</ul><h2>How to use</h2>
+<code>JDDateCountdownFlipView</code><br><strong>A date countdown.</strong> Just init with a target date and it will show the remaining days, hours, minutes and seconds until that date.</li>
+</ul><h2>Usage</h2>
 
-<p>Recommend: Use <a href="https://github.com/CocoaPods/CocoaPods/">cocoapods</a> to install it.  </p>
+<p>In any case, after installing, you only need to follow some simple steps to get started. Here is a full example usage:</p>
 
-<p>(OR add all files from <code>JDFlipNumberView/JDFlipNumberView/</code> manually to your project, including the <code>JDFlipNumberView.bundle</code>.<br>
-And you also need to link the <code>QuartzCore.framework</code>)</p>
+<p><strong>Example:</strong> A 4 digit FlipNumberView animating down every second.</p>
 
-<p>In any case, after installing, you only need to follow these three steps, to use it:</p>
-
-<blockquote>
-<ol>
-<li>Init the class</li>
-<li>Set an int value (or a date)</li>
-<li>Start the animation</li>
-</ol>
-</blockquote>
-
-<p><strong>Example:</strong> A countdown view from 1000 seconds to 0.</p>
-
-<pre><code>JDGroupedFlipNumberView *flipNumberView = [[JDGroupedFlipNumberView alloc] initWithFlipNumberViewCount: 4];
-flipNumberView.intValue = 1000;
+<pre><code>// create a new FlipNumberView, set a value, start an animation
+JDFlipNumberView *flipNumberView = [[JDFlipNumberView alloc] initWithDigitCount:4];
+flipNumberView.value = 1337;
 [flipNumberView animateDownWithTimeInterval: 1.0];
 
+// add to view hierarchy and resize
 [self.view addSubview: flipNumberView];
-flipNumberView.frame = CGRectMake(10,100,300,100);
+flipNumberView.frame = CGRectMake(20,100,300,100);
 </code></pre>
 
-<p>That's it.<br>
-This will display a working, flipping, animating countdown view!</p>
+<p>That's it. This will display a working, flipping, animating countdown view!</p>
 
-<h2>How to start the animation?</h2>
+<h2>Possible animations</h2>
 
-<p>Use any of the following methods:</p>
+<p>Basic animations:</p>
 
-<pre><code>// basic animation
-- (void) animateToNextNumber;
-- (void) animateToPreviousNumber;
+<pre><code>- (void)setValue:(NSInteger)newValue animated:(BOOL)animated;
+- (void)animateToNextNumber;
+- (void)animateToPreviousNumber;
+</code></pre>
 
-// timed animation
-- (void) animateUpWithTimeInterval: (NSTimeInterval) timeInterval;
-- (void) animateDownWithTimeInterval: (NSTimeInterval) timeInterval;
+<p>Targeted animation over time:</p>
+
+<pre><code>- (void)animateToValue:(NSInteger)newValue duration:(CGFloat)duration;
+</code></pre>
+
+<p>Timed animation without target value:</p>
+
+<pre><code>- (void)animateUpWithTimeInterval:(NSTimeInterval)timeInterval;
+- (void)animateDownWithTimeInterval:(NSTimeInterval)timeInterval;
+</code></pre>
+
+<h2>Customization</h2>
+
+<p><em>You may use the original <code>.psd</code> file from the <code>gfx</code> folder to create custom graphics.</em></p>
+
+<p><strong>A) Replace original images</strong><br>
+Replace the images within the JDFlipNumberView.bundle. But the next pod install will revert your changes.</p>
+
+<p><strong>B) Use your own bundle</strong><br>
+Add your own graphics bundle to your project. You need one image per digit. <code>0.png, 1.png, 2.png, etc.</code>  </p>
+
+<p>Before using any FlipNumberViews, set your own images like this:</p>
+
+<pre><code>[JD_IMG_FACTORY generateImagesFromBundleNamed:@"yourBundleName"]
 </code></pre>
 
 <h2>Screenshots</h2>
@@ -106,15 +125,12 @@ This will display a working, flipping, animating countdown view!</p>
 <p><img src="https://raw.github.com/jaydee3/JDFlipNumberView/master/Screenshots/singledigit.png" alt="Single Digit" title="Single Digit"></p>
 
 <p><img src="https://raw.github.com/jaydee3/JDFlipNumberView/master/Screenshots/datecountdown.png" alt="Date Countdown" title="Date Countdown"></p>
-        </section>
-
-        <footer>
-          JDFlipNumberView is maintained by <a href="https://github.com/jaydee3">jaydee3</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
