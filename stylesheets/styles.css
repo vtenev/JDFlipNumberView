@@ -76,7 +76,7 @@ h4, h5, h6 {
 }
 
 a {
-  color:#C30000;
+  color:#708D00;
   font-weight:200;
   text-decoration:none;
 }
@@ -228,8 +228,8 @@ p.header {
 
 h1.header {
 	font-family: Arvo, sans-serif;
-	font-size: 30px;
-	font-weight: 300;
+	font-size: 18px;
+	font-weight: bold;
 	line-height: 1.3em;
 	border-bottom: none;
 	margin-top: 0;
@@ -261,30 +261,24 @@ header li {
 	line-height: 1em;
 	padding: 6px 6px 6px 7px;
 
-	background: #AF0011;
-	background: -moz-linear-gradient(top, #AF0011 0%, #820011 100%);
+	background: #CFD9A7;
+	background: -moz-linear-gradient(top, #CFD9A7 0%, #859D15 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-  background: -webkit-linear-gradient(top, #AF0011 0%,#820011 100%);
-  background: -o-linear-gradient(top, #AF0011 0%,#820011 100%);
-  background: -ms-linear-gradient(top, #AF0011 0%,#820011 100%);
-  background: linear-gradient(top, #AF0011 0%,#820011 100%);
+  background: -webkit-linear-gradient(top, #CFD9A7 0%,#859D15 100%);
+  background: -o-linear-gradient(top, #CFD9A7 0%,#859D15 100%);
+  background: -ms-linear-gradient(top, #CFD9A7 0%,#859D15 100%);
+  background: linear-gradient(top, #CFD9A7 0%,#859D15 100%);
 
 	border-radius:4px;
-  border:1px solid #0D0D0D;
+  border:1px solid #829B0E;
 
-	-webkit-box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
-	box-shadow: inset 0px 1px 1px 0 rgba(233,2,38, 1);
+	-webkit-box-shadow: inset 0px 1px 1px 0 rgba(130, 155, 14, 1);
+	box-shadow: inset 0px 1px 1px 0 rgba(130, 155, 14, 1);
 
 }
 
 header li:hover {
-	background: #C3001D;
-	background: -moz-linear-gradient(top, #C3001D 0%, #950119 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-  background: -webkit-linear-gradient(top, #C3001D 0%,#950119 100%);
-  background: -o-linear-gradient(top, #C3001D 0%,#950119 100%);
-  background: -ms-linear-gradient(top, #C3001D 0%,#950119 100%);
-  background: linear-gradient(top, #C3001D 0%,#950119 100%);
+	background: #859D15;
 }
 
 a.buttons {
@@ -318,11 +312,13 @@ section {
 /* Footer */
 
 footer {
+  font-size: 11px;
+  line-height: 15px;
   width:170px;
   float:left;
   position:fixed;
   bottom:10px;
-	padding-left: 50px;
+  padding-left: 50px;
 }
 
 @media print, screen and (max-width: 960px) {
