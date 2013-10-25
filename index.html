@@ -17,28 +17,28 @@
     <div class="wrapper">
       <header>
         <h1 class="header">JDFlipNumberView</h1>
-          
-        <p class="header">Simulating a animated analog flip clock for iOS.</p>
+        <p class="header">[iOS] Representing analog flip numbers like airport/trainstation displays </p>
 
         <ul>
-          <li><a class="buttons github" href="https://github.com/jaydee3/JDFlipNumberView">View On GitHub</a></li><br>
           <li class="download"><a class="buttons" href="https://github.com/jaydee3/JDFlipNumberView/zipball/master">Download ZIP</a></li>
           <li class="download"><a class="buttons" href="https://github.com/jaydee3/JDFlipNumberView/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/jaydee3/JDFlipNumberView">View On GitHub</a></li>
         </ul>
 
         <p class="header">This project is maintained by <a class="header name" href="https://github.com/jaydee3">jaydee3</a></p>
+
+
       </header>
-        
       <section>
-          <h2>JDFlipNumberView 2.0</h2>
+        <h2>
+<a name="jdflipnumberview-20" class="anchor" href="#jdflipnumberview-20"><span class="octicon octicon-link"></span></a>JDFlipNumberView 2.0</h2>
 
 <p>The FlipNumberView is simulating an analog flip display (like those for the departure time on the airport). It's well abstracted and damn easy to use. Please open a <a href="https://github.com/jaydee3/JDFlipNumberView/issues">Github issue</a>, if you think anything is missing or wrong.</p>
 
-<p>See <a href="#screenshots">screenshots</a> of the example project below.<br>
-If you are using this class, you may list your app on the <a href="https://github.com/jaydee3/JDFlipNumberView/wiki/Apps-using-JDFlipNumberView">wiki page</a>.</p>
+<p><img src="gfx/screenshots.png" alt="Screenshots" title="Screenshots"></p>
 
-<a name="installation"></a>
-<h2>Installation</h2>
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p><strong>A) Use CocoaPods</strong> (preferred way, see <a href="http://cocoapods.org">cocoapods website</a>)</p>
 
@@ -54,9 +54,9 @@ If you are using this class, you may list your app on the <a href="https://githu
 project, including the <code>JDFlipNumberView.bundle</code><br>
 2) Link with the <code>QuartzCore.framework</code></p>
 </blockquote>
-          
-<a name="contents"></a>
-<h2>Contents</h2>
+
+<h2>
+<a name="contents" class="anchor" href="#contents"><span class="octicon octicon-link"></span></a>Contents</h2>
 
 <p>The two main classes are:</p>
 
@@ -67,7 +67,8 @@ The <strong>Standard FlipNumberView</strong>. It shows an integer value as FlipV
 It has a choosable amount of digits.</li>
 <li>
 <code>JDDateCountdownFlipView</code><br><strong>A date countdown.</strong> Just init with a target date and it will show the remaining days, hours, minutes and seconds until that date.</li>
-</ul><h2>Usage</h2>
+</ul><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>In any case, after installing, you only need to follow some simple steps to get started. Here is a full example usage:</p>
 
@@ -85,8 +86,8 @@ flipNumberView.frame = CGRectMake(20,100,300,100);
 
 <p>That's it. This will display a working, flipping, animating countdown view!</p>
 
-<a name="animations"></a>
-<h2>Possible animations</h2>
+<h2>
+<a name="possible-animations" class="anchor" href="#possible-animations"><span class="octicon octicon-link"></span></a>Possible animations</h2>
 
 <p>Basic animations:</p>
 
@@ -106,8 +107,8 @@ flipNumberView.frame = CGRectMake(20,100,300,100);
 - (void)animateDownWithTimeInterval:(NSTimeInterval)timeInterval;
 </code></pre>
 
-<a name="customization"></a>
-<h2>Customization</h2>
+<h2>
+<a name="customization" class="anchor" href="#customization"><span class="octicon octicon-link"></span></a>Customization</h2>
 
 <p><em>You may use the original <code>.psd</code> file from the <code>gfx</code> folder to create custom graphics.</em></p>
 
@@ -121,18 +122,17 @@ Add your own graphics bundle to your project. You need one image per digit. <cod
 
 <pre><code>[JD_IMG_FACTORY generateImagesFromBundleNamed:@"yourBundleName"]
 </code></pre>
-          
-<a name="screenshots"></a>
-<h2>Screenshots</h2>
 
-<p><img src="https://raw.github.com/jaydee3/JDFlipNumberView/master/Screenshots/menu.png" alt="Overview" title="Overview"></p>
+<h2>
+<a name="twitter" class="anchor" href="#twitter"><span class="octicon octicon-link"></span></a>Twitter</h2>
 
-<p><img src="https://raw.github.com/jaydee3/JDFlipNumberView/master/Screenshots/singledigit.png" alt="Single Digit" title="Single Digit"></p>
+<p>I'm <a href="http://twitter.com/jaydee3">@jaydee3</a> on Twitter.<br>
+Feel free to <a href="https://twitter.com/intent/tweet?button_hashtag=JDFlipNumberView&amp;text=I%20discovered%20a%20very%20nice%20and%20simple-to-use%20animated%20FlipView%20for%20iOS:%20https://github.com/jaydee3/JDFlipNumberView&amp;via=jaydee3">post a tweet</a>, if you like the FlipNumberView.  </p>
 
-<p><img src="https://raw.github.com/jaydee3/JDFlipNumberView/master/Screenshots/datecountdown.png" alt="Date Countdown" title="Date Countdown"></p>
+<p><a href="https://twitter.com/intent/tweet?button_hashtag=JDFlipNumberView&amp;text=I%20discovered%20a%20very%20nice%20and%20simple-to-use%20animated%20FlipView%20for%20iOS:%20https://github.com/jaydee3/JDFlipNumberView&amp;via=jaydee3"><img src="gfx/tweetbutton.png" alt="TweetButton" title="Tweet"></a></p>
       </section>
       <footer>
-        <p>Hosted on <a href="https://pages.github.com">GitHub Pages</a><br> Based on the Dinky theme</p>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
