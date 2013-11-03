@@ -43,18 +43,24 @@
 
 <p><strong>A) Use CocoaPods</strong> (preferred way, see <a href="http://cocoapods.org">cocoapods website</a>)</p>
 
-<blockquote>
-<p>1) add <code>pod 'JDFlipNumberView'</code> to your Podfile<br>
-2) run <code>pod install</code> </p>
-</blockquote>
+<p>
+<ol>
+<li>add <code>pod 'JDFlipNumberView'</code> to your Podfile (or <code>pod 'JDFlipNumberViewNoImages'</code>)</li>
+<li>run <code>pod install</code></li>
+</ol>
+
+<blockquote><code>JDFlipNumberViewNoImages</code> won't contain the default bundle. You need to provide your own image bundle. See Customization below for more infos.</blockquote>
+</p>
 
 <p><strong>B) Manual way</strong> (not needed, if you use cocoapods):</p>
 
-<blockquote>
-<p>1) Add all files from <code>JDFlipNumberView/JDFlipNumberView/*</code> to your 
-project, including the <code>JDFlipNumberView.bundle</code><br>
-2) Link with the <code>QuartzCore.framework</code></p>
-</blockquote>
+<p>
+<ol>
+<li>Add all files from <code>JDFlipNumberView/JDFlipNumberView/*</code> to your 
+project, including the <code>JDFlipNumberView.bundle</code></li>
+<li>Link with the <code>QuartzCore.framework</code></li>
+</ol>
+</p>
 
 <h2>
 <a name="contents" class="anchor" href="#contents"><span class="octicon octicon-link"></span></a>Contents</h2>
@@ -114,23 +120,30 @@ flipNumberView.frame = CGRectMake(20,100,300,100);
 <p><em>You may use the original <code>.psd</code> file from the <code>gfx</code> folder to create custom graphics.</em></p>
 
 <p><strong>A) Replace original images</strong><br>
-Replace the images within the JDFlipNumberView.bundle. But the next pod install will revert your changes.</p>
+Replace the images within the JDFlipNumberView.bundle. (In the Finder just <code>Rightclick > Show Contents</code> to see the images.) But the next pod install will revert any changes.</p>
 
 <p><strong>B) Use your own bundle</strong><br>
-Add your own graphics bundle to your project. You need one image per digit. <code>0.png, 1.png, 2.png, etc.</code>  </p>
+Add your own graphics bundle to your project. A bundle is nothing else, than a regular folder, but named with <code>.bundle</code> as extension. You need one image per digit. <code>0.png, 1.png, 2.png, etc.</code>  </p>
 
-<p>Before using any FlipNumberViews, set your own images like this:</p>
+<h4>Implementing a custom bundle</h4>
 
-<pre><code>[JD_IMG_FACTORY generateImagesFromBundleNamed:@"yourBundleName"]
-</code></pre>
+<p>To use your own bundles, create the FlipViews like this:
+
+<pre><code>[JDFlipNumberView initWithDigitCount:<#count#> 
+                     imageBundleName:<#imageBundleName#>];</pre></code>
+
+or for a DateCountDown like this:</p>
+
+<pre><code>[JDDateCountdownFlipView initWithDayDigitCount:<#count#>
+                               imageBundleName:<#imageBundleName#>];</pre></code>
 
 <h2>
 <a name="twitter" class="anchor" href="#twitter"><span class="octicon octicon-link"></span></a>Twitter</h2>
 
-<p>I'm <a href="http://twitter.com/jaydee3">@jaydee3</a> on Twitter.<br>
-Feel free to <a href="https://twitter.com/intent/tweet?button_hashtag=JDFlipNumberView&amp;text=I%20discovered%20a%20very%20nice%20and%20simple-to-use%20animated%20FlipView%20for%20iOS:%20https://github.com/jaydee3/JDFlipNumberView&amp;via=jaydee3">post a tweet</a>, if you like the FlipNumberView.  </p>
+<p>I'm <a href="http://twitter.com/jaydee3">@jaydee3</a> on Twitter.
+Feel free to <a href="https://twitter.com/intent/tweet?button_hashtag=JDFlipNumberView&amp;text=I%20discovered%20a%20very%20nice%20and%20simple-to-use%20animated%20FlipView%20for%20iOS:%20https://github.com/jaydee3/JDFlipNumberView&amp;via=jaydee3">post a tweet</a>, if you like the FlipNumberView.  <br>
 
-<p><a href="https://twitter.com/intent/tweet?button_hashtag=JDFlipNumberView&amp;text=I%20discovered%20a%20very%20nice%20and%20simple-to-use%20animated%20FlipView%20for%20iOS:%20https://github.com/jaydee3/JDFlipNumberView&amp;via=jaydee3"><img src="images/tweetbutton.png" alt="TweetButton" title="Tweet"></a></p>
+<a href="https://twitter.com/intent/tweet?button_hashtag=JDFlipNumberView&amp;text=I%20discovered%20a%20very%20nice%20and%20simple-to-use%20animated%20FlipView%20for%20iOS:%20https://github.com/jaydee3/JDFlipNumberView&amp;via=jaydee3"><img src="images/tweetbutton.png" alt="TweetButton" title="Tweet"></a></p>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
