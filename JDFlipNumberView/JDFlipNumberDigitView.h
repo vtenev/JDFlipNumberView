@@ -24,8 +24,10 @@ typedef void(^JDDigitAnimationCompletionBlock)(BOOL finished);
 @property (nonatomic, assign) BOOL upscalingAllowed;
 @property (nonatomic, assign) NSUInteger zDistance;
 @property (nonatomic, copy) NSString *imageBundleName;
+@property (nonatomic, strong) NSDictionary *attributes;
 
 - (id)initWithImageBundle:(NSString*)imageBundleName;
+- (id)initWithAttributes:(NSDictionary *)attributes;
 
 - (void)setValue:(NSUInteger)value withAnimationType:(JDFlipAnimationType)animationType
       completion:(JDDigitAnimationCompletionBlock)completionBlock;

@@ -12,7 +12,7 @@
 
 
 static CGFloat JDFlipAnimationMinimumTimeInterval = 0.01; // = 100 fps
-static CGFloat JDFlipViewRelativeMargin = 0.05; // use 5% of width as margin
+static CGFloat JDFlipViewRelativeMargin = 0.00; // use 0% of width as margin
 
 
 typedef NS_OPTIONS(NSUInteger, JDFlipAnimationDirection) {
@@ -21,6 +21,7 @@ typedef NS_OPTIONS(NSUInteger, JDFlipAnimationDirection) {
 };
 
 @interface JDFlipNumberView ()
+
 @property (nonatomic, copy) NSString *imageBundleName;
 @property (nonatomic, strong) NSArray *digitViews;
 @property (nonatomic, assign) JDFlipAnimationType animationType;
@@ -69,6 +70,17 @@ typedef NS_OPTIONS(NSUInteger, JDFlipAnimationDirection) {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _imageBundleName = imageBundleName;
+        [self commonInitForDigitCount:digitCount];
+    }
+    return self;
+}
+
+- (id)initWithDigitCount:(NSUInteger)digitCount
+                    attributes:(NSDictionary *)attributes;
+{
+    self = [super initWithFrame:CGRectZero];
+    if (self) {
+        _attributes = attributes;
         [self commonInitForDigitCount:digitCount];
     }
     return self;
@@ -238,7 +250,11 @@ typedef NS_OPTIONS(NSUInteger, JDFlipAnimationDirection) {
     JDFlipNumberDigitView* view = nil;
     NSMutableArray* digitViews = [[NSMutableArray alloc] initWithCapacity:digitCount];
     for (int i = 0; i < digitCount; i++) {
-        view = [[JDFlipNumberDigitView alloc] initWithImageBundle:self.imageBundleName];
+        if (self.attributes) {
+            view = [[JDFlipNumberDigitView alloc] initWithAttributes:self.attributes];
+        } else {
+            view = [[JDFlipNumberDigitView alloc] initWithImageBundle:self.imageBundleName];
+        }
         [self addSubview:view];
         [digitViews addObject:view];
     }
@@ -261,6 +277,16 @@ typedef NS_OPTIONS(NSUInteger, JDFlipAnimationDirection) {
     // update digits
     for (JDFlipNumberDigitView *digit in self.digitViews) {
         [digit setImageBundleName:imageBundleName];
+    }
+}
+
+- (void)setAttributes:(NSDictionary *)attributes
+{
+    _attributes = attributes;
+
+    // update digits
+    for (JDFlipNumberDigitView *digit in self.digitViews) {
+        [digit setAttributes:attributes];
     }
 }
 

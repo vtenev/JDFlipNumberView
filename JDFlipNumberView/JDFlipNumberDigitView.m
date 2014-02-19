@@ -64,6 +64,26 @@ typedef NS_OPTIONS(NSUInteger, JDFlipAnimationState) {
     return self;
 }
 
+- (id)initWithAttributes:(NSDictionary *)attributes
+{
+    self = [super initWithFrame:CGRectZero];
+    if (self) {
+        // setup view
+        self.backgroundColor = [UIColor clearColor];
+        self.autoresizesSubviews = NO;
+
+        // default values
+        _value = 0;
+        _animationState = JDFlipAnimationStateFirstHalf;
+        _animationDuration = kFlipAnimationMaximumAnimationDuration;
+
+        // images & frame
+        _attributes = attributes;
+        [self initImagesAndFrames];
+    }
+    return self;
+}
+
 - (void)initImagesAndFrames;
 {
 	// setup image views
@@ -104,21 +124,37 @@ typedef NS_OPTIONS(NSUInteger, JDFlipAnimationState) {
     self.bottomImageView.image = self.bottomImages[self.value];
 }
 
+- (void)setAttributes:(NSDictionary *)attributes
+{
+    _attributes = attributes;
+
+    // update images
+    self.topImageView.image	   = self.topImages[self.value];
+    self.flipImageView.image   = self.topImages[self.value];
+    self.bottomImageView.image = self.bottomImages[self.value];
+}
+
 - (NSArray*)topImages;
 {
     JDFlipNumberViewImageFactory *factory = [JDFlipNumberViewImageFactory sharedInstance];
+    if (self.attributes)
+        return [factory topImagesForAttributes:self.attributes];
     return [factory topImagesForBundleNamed:self.imageBundleName];
 }
 
 - (NSArray*)bottomImages;
 {
     JDFlipNumberViewImageFactory *factory = [JDFlipNumberViewImageFactory sharedInstance];
+    if (self.attributes)
+        return [factory bottomImagesForAttributes:self.attributes];
     return [factory bottomImagesForBundleNamed:self.imageBundleName];
 }
 
 - (CGSize)imageSize;
 {
     JDFlipNumberViewImageFactory *factory = [JDFlipNumberViewImageFactory sharedInstance];
+    if (self.attributes)
+        return [factory imageSizeForAttributes:self.attributes];
     return [factory imageSizeForBundleNamed:self.imageBundleName];
 }
 

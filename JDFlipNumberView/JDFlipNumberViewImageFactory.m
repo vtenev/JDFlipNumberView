@@ -71,6 +71,38 @@
     return CGSizeZero;
 }
 
+- (NSString *)stringFromAttributes:(NSDictionary *)attributes;
+{
+    return attributes.description;
+}
+
+- (NSArray *)topImagesForAttributes:(NSDictionary *)attributes;
+{
+    if ([_topImages[[self stringFromAttributes:attributes]] count] == 0) {
+        [self generateImagesFromAttributes:attributes];
+    }
+
+    return _topImages[[self stringFromAttributes:attributes]];
+}
+
+- (NSArray *)bottomImagesForAttributes:(NSDictionary *)attributes;
+{
+    if ([_bottomImages[[self stringFromAttributes:attributes]] count] == 0) {
+        [self generateImagesFromAttributes:attributes];
+    }
+
+    return _bottomImages[[self stringFromAttributes:attributes]];
+}
+
+- (CGSize)imageSizeForAttributes:(NSDictionary *)attributes;
+{
+    NSArray *images = self.topImages[[self stringFromAttributes:attributes]];
+    if (images.count > 0) {
+        return [images[0] size];
+    }
+    return CGSizeZero;
+}
+
 #pragma mark -
 #pragma mark image generation
 
@@ -106,6 +138,33 @@
     // save images
 	self.topImages[bundleName]    = [NSArray arrayWithArray:topImages];
 	self.bottomImages[bundleName] = [NSArray arrayWithArray:bottomImages];
+}
+
+- (void)generateImagesFromAttributes:(NSDictionary *)attributes;
+{
+    // create image array
+	NSMutableArray* topImages = [NSMutableArray arrayWithCapacity:10];
+	NSMutableArray* bottomImages = [NSMutableArray arrayWithCapacity:10];
+
+	// create bottom and top images
+    for (NSInteger digit=0; digit<10; digit++)
+    {
+        NSString *digitString = [NSString stringWithFormat:@"%d", digit];
+        CGSize size = [digitString sizeWithAttributes:attributes];
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+        [digitString drawAtPoint:CGPointMake(0.0, 0.0) withAttributes:attributes];
+        UIImage *sourceImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        // generate & save images
+        NSArray *images = [self generateImagesFromImage:sourceImage];
+        [topImages addObject:images[0]];
+        [bottomImages addObject:images[1]];
+	}
+    self.topImages[[self stringFromAttributes:attributes]] =
+    [NSArray arrayWithArray:topImages];
+    self.bottomImages[[self stringFromAttributes:attributes]] =
+    [NSArray arrayWithArray:bottomImages];
 }
 
 - (NSArray*)generateImagesFromImage:(UIImage*)image;

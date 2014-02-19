@@ -16,7 +16,12 @@
 - (NSArray*)topImagesForBundleNamed:(NSString*)bundleName;
 - (NSArray*)bottomImagesForBundleNamed:(NSString*)bundleName;
 
+- (CGSize)imageSizeForAttributes:(NSDictionary *)attributes;
+- (NSArray *)topImagesForAttributes:(NSDictionary *)attributes;
+- (NSArray *)bottomImagesForAttributes:(NSDictionary *)attributes;
+
 - (void)generateImagesFromBundleNamed:(NSString*)bundleName;
+- (void)generateImagesFromAttributes:(NSDictionary *)attributes;
 - (NSArray*)generateImagesFromImage:(UIImage*)image;
 
 @end
